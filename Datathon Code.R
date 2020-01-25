@@ -1,3 +1,4 @@
+setwd('C:/Rice 2019-2020/Datathon')
 library('readxl')
 divorce = read_excel('C:/Rice 2019-2020/Datathon/divorce.xlsx')
 divorce
@@ -19,8 +20,12 @@ plot(x = names(divorced), y = divorced_means, type = "p", xlim =c(0,55),
 points(x = names(married), y = married_means, type = "p", col = "blue",
      main = "Married Couples' Attribute Ratings", xlab = "Attribute", 
      ylab = "Rating(0 being best)")
-divorced1 <- as.vector(t(divorced[,1]))
-married1 <- as.vector(t(married[,1]))
-t.test(divorced1, married1)
-var(divorced1)
-var(married1)
+weights = read.table('Weights.txt')
+Weights <- t(weights)
+plot(x = c(1:54), y = Weights, type = "p", xlim = c(0, 55), 
+     ylim = c(-.1, .15), main = "Attribute Influence",
+     xlab = "Attribute", ylab = "Weight")
+Influence <- (divorced_means - married_means) * Weights
+plot(x = c(1:54), y = Influence, type = "p", xlim = c(0, 55),
+     ylim = c(-.2, .5), main = "Overall Attribute Influence",
+     xlab = "Attribute", ylab = "Level of Influence")
