@@ -10,7 +10,7 @@ divorced_means <- colMeans(divorced)
 married_means <- colMeans(married)
 names(divorced) <- c(1:54)
 names(married) <- c(1:54)
-par(mfrow=c(1,2))
+layout(matrix(c(3,3,1,2), 2, 2, byrow = TRUE))
 plot(x = names(divorced), y = divorced_means, type = "p", xlim =c(0,55),
      ylim = c(0,4), col = "red",
      main = "Divorced Couples' Attribute Ratings
@@ -23,7 +23,7 @@ points(x = names(married), y = married_means, type = "p", col = "blue",
 weights = read.table('Weights.txt')
 Weights <- t(weights)
 plot(x = c(1:54), y = Weights, type = "p", xlim = c(0, 55), 
-     ylim = c(-.1, .15), main = "Attribute Influence",
+     ylim = c(-.1, .15), main = "Weight of Each Attribute",
      xlab = "Attribute", ylab = "Weight")
 Influence <- (divorced_means - married_means) * Weights
 plot(x = c(1:54), y = Influence, type = "p", xlim = c(0, 55),
