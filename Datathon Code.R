@@ -28,4 +28,4 @@ plot(x = c(1:54), y = Weights, type = "p", xlim = c(0, 55),
 Influence <- (divorced_means - married_means) * Weights
 plot(x = c(1:54), y = Influence, type = "p", xlim = c(0, 55),
      ylim = c(-.2, .5), main = "Overall Attribute Influence",
-     xlab = "Attribute", ylab = "Level of Influence")
+     xlab = "Attribute", ylab = "Divorce Index Contribution")
